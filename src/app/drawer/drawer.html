@@ -1,0 +1,64 @@
+<div class="container p-4">
+
+   <!-- Encabezado -->
+  <div class="d-flex align-items-center mb-3">
+    <button class="btn btn-link p-0 me-2">
+      <span class="fs-4">←</span>
+    </button>
+    <h5 class="text-center flex-grow-1 mb-0">CREAR PRESUPUESTO</h5>
+  </div>
+
+    <!-- Imagen -->
+  <div class="d-flex align-items-center gap-2 mb-3">
+    <div class="d-flex gap-2">
+      <button class="btn btn-outline-primary d-flex flex-column align-items-center">
+        📷 <span class="small">Cámara</span>
+      </button>
+      <button class="btn btn-outline-primary d-flex flex-column align-items-center">
+        ⬆️ <span class="small">Subir imagen</span>
+      </button>
+    </div>
+    <span class="badge bg-light text-dark ms-2">
+      documento.jpg <span class="text-danger">❌</span>
+    </span>
+  </div>
+
+  <!-- Servicios -->
+  <h6 class="fw-semibold mt-4">Servicios</h6>
+  <div *ngIf="productos.length === 0" class="text-muted mb-2">No existen ítems creados.</div>
+
+  <div *ngFor="let p of productos" class="border rounded p-3 mb-3 shadow-sm">
+    <div class="fw-bold text-uppercase small text-secondary">{{ p.sku }}</div>
+    <div class="fw-semibold">{{ p.nombre }}</div>
+    <div class="d-flex align-items-center justify-content-between mt-2">
+      <span>{{ p.precio | currency:'USD':'symbol' }} x {{ p.cantidad }} Unidades</span>
+      <div class="btn-group btn-group-sm" role="group">
+        <button class="btn btn-outline-secondary" (click)="cambiarCantidad(p, -1)" [disabled]="p.cantidad <= 1">−</button>
+        <button class="btn btn-light disabled">{{ p.cantidad }}</button>
+        <button class="btn btn-outline-secondary" (click)="cambiarCantidad(p, 1)">+</button>
+        <button class="btn btn-outline-danger" (click)="eliminar(p)">🗑️</button>
+      </div>
+    </div>
+    <div class="text-end text-muted small">Total: {{ p.precio * p.cantidad | currency }}</div>
+  </div>
+
+  <!-- Agregar producto -->
+  <button class="btn btn-primary w-100 my-3" (click)="agregarProducto()">+ Agregar Producto</button>
+
+  <!-- Detalle de costos -->
+  <h6 class="fw-semibold">Detalle de Costos</h6>
+  <div class="bg-light border rounded p-3 d-flex justify-content-between align-items-center">
+    <div>
+      <p class="mb-1">Neto: {{ neto | currency }}</p>
+      <p class="mb-1">IVA (19%): {{ iva | currency }}</p>
+      <p class="mb-0 fw-bold">Total: {{ total | currency }}</p>
+    </div>
+  </div>
+
+  <!-- Acciones -->
+  <div class="d-flex justify-content-between mt-4">
+    <button class="btn btn-outline-dark">Cancelar</button>
+    <button class="btn btn-success">Guardar</button>
+  </div>
+
+</div>

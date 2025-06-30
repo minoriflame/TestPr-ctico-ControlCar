@@ -1,0 +1,42 @@
+<!-- Cabecera del modal -->
+<div class="bg-dark text-white text-center py-2 rounded-top">
+  <h6 class="mb-0 text-uppercase">CREACIÓN DE PRODUCTO</h6>
+</div>
+
+<!-- Contenido del formulario -->
+<div class="bg-light p-4 rounded-bottom">
+
+  <p class="fw-semibold text-primary small text-uppercase">Ingresar los siguientes datos</p>
+
+  <mat-form-field appearance="outline" class="w-100 mb-3">
+    <mat-label>SKU</mat-label>
+    <input matInput [(ngModel)]="producto.sku" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="w-100 mb-3">
+    <mat-label>Nombre</mat-label>
+    <input matInput [(ngModel)]="producto.nombre" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="w-100 mb-3">
+    <mat-label>Descripción</mat-label>
+    <input matInput [(ngModel)]="producto.descripcion" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="w-100 mb-3">
+    <mat-label>Precio de Venta</mat-label>
+    <input matInput type="number" [(ngModel)]="producto.precio" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="w-100 mb-4">
+    <mat-label>Marca</mat-label>
+    <input matInput [(ngModel)]="producto.marca" />
+  </mat-form-field>
+
+  <!-- Acciones -->
+  <div class="d-flex justify-content-between">
+    <button mat-stroked-button color="basic" (click)="cancelar()">Cancelar</button>
+    <button mat-flat-button color="primary" (click)="guardar()">Guardar</button>
+  </div>
+
+</div>
